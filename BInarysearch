@@ -1,0 +1,132 @@
+#include<iostream>
+using namespace std;
+int binarySearch(int arr[],int n,int target){
+    int start =0;
+    int end = n-1;
+    int mid=start+(end-start)/2;
+    while(start<=end){
+         int mid=start+(end-start)/2;
+        if(arr[mid]==target){
+            return mid;
+        }
+        else if(target >arr[mid]){
+            start = mid+1;
+        }
+        else{
+            end = mid-1;
+        }
+       
+    }
+    return -1;
+}
+int firstOccurance(int arr[],int n ,int target){
+    int start =0;
+    int end = n-1;
+    int ans =-1;
+    while(start<=end){
+        int mid = start+(end - start)/2;
+        if(arr[mid]== target){
+            ans = mid;
+            // left me jao
+            end = mid-1;
+        }
+        else{
+            start = mid+1;
+        }
+    }
+    return ans;
+
+}
+int lastOcrrance(int arr[],int n , int target){
+    int start =0;
+    int end = n-1;
+    int ans= -1;
+    while(start<=end){
+        int mid = start+(end-start)/2;
+        if(arr[mid]==target){
+            ans = mid;
+            // right me jao 
+            start = mid+1;
+        }
+        else{
+            end = mid-1;
+
+        }
+    }
+    return ans;
+}
+void CountOccurrences(int arr[],int n , int target){
+    int first = firstOccurance(arr,n,target);
+    int last = lastOcrrance(arr,n,target);
+    int ans= last - first +1;
+    cout <<"CountOccurrences "<<ans<<endl;
+}
+void SmallestElement(int arr[],int n,int target){
+    int start =0;
+    int end = n-1;
+    int ans =-1;
+    while(start<=end){
+        int mid = start+(end -start)/2;
+        if(arr[mid]>target){
+            // left me jao lekin ans store karo phele
+            ans= arr[mid];
+            end=mid-1;
+        }
+        else{
+            start = mid+1;
+        }
+    }
+    cout <<"Smallest Element Greater than Target :"<<ans <<endl;
+}
+void LargestElement(int arr[],int n,int target){
+    int start =0;
+    int end= n-1;
+    int ans= -1;
+    while(start<=end){
+        int mid = start+(end -start)/2;
+        if(arr[mid]<target){
+            ans= arr[mid];
+            // right me jaounga
+            start = mid+1;
+        }
+        else{
+            end = mid-1;
+        }
+    }
+cout<<"Largest Element Smaller than Target :"<<ans <<endl;
+}
+
+int SquareRoot(int n){
+    int start = 0;
+    int end = n;
+    int ans= -1;
+    while(start<=end){
+        int mid =start+(end-start)/2;
+        if(mid*mid == n){
+            return mid;
+        }
+        else if(mid*mid < n){
+                ans= mid;  
+            start = mid+1;
+        }
+        else{
+    
+            end = mid-1;
+
+        }
+
+    }
+   return ans;
+}
+int main(){
+    // int arr[]={2,4,6,8,10};
+    // int n= sizeof(arr)/sizeof(arr[0]);
+    // int target = 5;
+    // lastOcrrance(arr,n,target);
+    // CountOccurrences(arr,n,target);
+    // SmallestElement(arr,n,target);
+    // LargestElement(arr,n,target);
+    int n = 26;
+    cout << SquareRoot(n);
+
+}
